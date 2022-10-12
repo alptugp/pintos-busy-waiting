@@ -93,8 +93,12 @@ struct thread
 
     /* Shared between thread.c and synch.c. */
     struct list_elem elem;              /* List element. */
-    struct list_elem asleep_thread_elem;
+    struct list_elem sleeping_thread_elem;
+
+    /*The time when the sleeping thread needs to wake up.*/
     int waking_time;
+
+    /* Used to make a thread sleep by blocking it. */
     struct semaphore timer_sema;
 
 #ifdef USERPROG
